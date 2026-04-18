@@ -706,8 +706,7 @@ export default function App() {
         {activeSection === "resources" && <ResourcesPage />}
       </main>
       <footer className="border-t border-gray-100 py-6 text-center text-sm text-gray-400">
-        <p>Про зрение — образовательный проект · 2024</p>
-        <a href="mailto:millygaf0.9@gmail.com" className="text-blue-400 hover:text-blue-600 transition-colors mt-1 inline-block">
+        <a href="mailto:millygaf0.9@gmail.com" className="text-blue-400 hover:text-blue-600 transition-colors">
           millygaf0.9@gmail.com
         </a>
       </footer>
