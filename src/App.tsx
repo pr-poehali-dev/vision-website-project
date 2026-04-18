@@ -472,20 +472,44 @@ function TestPage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
-          {quizQuestions.map((q, i) => (
-            <div
-              key={i}
-              className={`rounded-2xl p-3 text-sm font-medium flex items-center gap-2 ${
-                answers[i] === q.correct
-                  ? "bg-green-50 text-green-700 border border-green-200"
-                  : "bg-red-50 text-red-600 border border-red-200"
-              }`}
-            >
-              <Icon name={answers[i] === q.correct ? "CheckCircle" : "XCircle"} size={16} />
-              Вопрос {i + 1}
-            </div>
-          ))}
+        {/* Разбор ошибок */}
+        <div className="text-left mb-8 space-y-4">
+          <h3 className="text-xl font-bold text-gray-800 text-center mb-6">Разбор ответов</h3>
+          {quizQuestions.map((q, i) => {
+            const isCorrect = answers[i] === q.correct;
+            return (
+              <div
+                key={i}
+                className={`rounded-2xl border-2 p-5 ${isCorrect ? "border-green-200 bg-green-50" : "border-red-200 bg-red-50"}`}
+              >
+                <div className="flex items-start gap-3 mb-3">
+                  <div className={`w-7 h-7 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5 ${isCorrect ? "bg-green-500" : "bg-red-400"} text-white`}>
+                    <Icon name={isCorrect ? "Check" : "X"} size={14} />
+                  </div>
+                  <p className="font-semibold text-gray-800 text-sm leading-snug">
+                    <span className="text-gray-400 mr-1">#{i + 1}</span> {q.question}
+                  </p>
+                </div>
+                {!isCorrect && (
+                  <div className="ml-10 space-y-1">
+                    <div className="flex items-center gap-2 text-sm text-red-600">
+                      <span className="font-medium">Твой ответ:</span>
+                      <span>{answers[i] !== null ? q.options[answers[i]!] : "—"}</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-green-700">
+                      <span className="font-medium">Правильный:</span>
+                      <span>{q.options[q.correct]}</span>
+                    </div>
+                  </div>
+                )}
+                {isCorrect && (
+                  <div className="ml-10 text-sm text-green-700">
+                    <span className="font-medium">Правильно:</span> {q.options[q.correct]}
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
 
         <button
