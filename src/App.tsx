@@ -3,7 +3,10 @@ import Icon from "@/components/ui/icon";
 
 type Section = "home" | "disorders" | "test" | "resources";
 
-const EYE_IMAGE = "https://cdn.poehali.dev/projects/8481e59e-735a-4847-89d5-2376edd1dbbe/files/9c3b3f37-9a2f-4a96-8fe3-ff662cc57882.jpg";
+const IMG_EYE_DIAGRAM = "https://cdn.poehali.dev/projects/8481e59e-735a-4847-89d5-2376edd1dbbe/files/9c3b3f37-9a2f-4a96-8fe3-ff662cc57882.jpg";
+const IMG_HOME_HERO = "https://cdn.poehali.dev/projects/8481e59e-735a-4847-89d5-2376edd1dbbe/files/483cc529-eb97-497c-97c4-5187f66083ce.jpg";
+const IMG_DISORDERS = "https://cdn.poehali.dev/projects/8481e59e-735a-4847-89d5-2376edd1dbbe/files/49bc3cb6-f948-4e29-9233-5fb19895d5ad.jpg";
+const IMG_TEST = "https://cdn.poehali.dev/projects/8481e59e-735a-4847-89d5-2376edd1dbbe/files/7e4b7db2-6ee6-4d3f-83da-ac0500a949a8.jpg";
 
 const quizQuestions = [
   {
@@ -64,7 +67,7 @@ function NavBar({ active, setActive }: { active: Section; setActive: (s: Section
   const navItems: { key: Section; label: string; icon: string }[] = [
     { key: "home", label: "Главная", icon: "Home" },
     { key: "disorders", label: "Нарушения", icon: "Eye" },
-    { key: "test", label: "Тест", icon: "ClipboardList" },
+    { key: "test", label: "Проверь себя", icon: "ClipboardList" },
     { key: "resources", label: "Ресурсы", icon: "BookOpen" },
   ];
 
@@ -73,7 +76,7 @@ function NavBar({ active, setActive }: { active: Section; setActive: (s: Section
       <div className="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <span className="text-2xl">👁️</span>
-          <span className="font-display text-lg font-bold text-gradient">Мир Зрения</span>
+          <span className="font-display text-lg font-bold text-gradient">Про зрение</span>
         </div>
 
         <div className="hidden md:flex items-center gap-1">
@@ -135,41 +138,78 @@ function HomePage() {
 
   return (
     <div className="animate-fade-in">
-      <section className="relative overflow-hidden rounded-3xl mb-10 gradient-blue-pink p-8 md:p-12 text-white">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/3 translate-x-1/3" />
-        <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/4" />
-        <div className="relative z-10 max-w-2xl">
-          <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium mb-6">
-            <span>✨</span> Образовательный проект о зрении
+      {/* Hero */}
+      <section className="relative overflow-hidden rounded-3xl mb-10 gradient-blue-pink text-white">
+        <div className="grid md:grid-cols-2 gap-0">
+          <div className="p-8 md:p-12 flex flex-col justify-center">
+            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium mb-6 w-fit">
+              <span>✨</span> Образовательный проект
+            </div>
+            <h1 className="font-display text-2xl md:text-3xl font-black mb-4 leading-tight">
+              Основа зрения: что такое, какие заболевания есть, профилактика
+            </h1>
+            <p className="text-base text-white/85 leading-relaxed">
+              Узнай всё о строении глаза, причинах нарушений и способах их профилактики. Проверь свои знания в интерактивном тесте!
+            </p>
           </div>
-          <h1 className="font-display text-3xl md:text-5xl font-black mb-4 leading-tight">
-            Как устроено<br />наше зрение?
-          </h1>
-          <p className="text-lg text-white/85 mb-6 leading-relaxed">
-            Узнай всё о строении глаза, причинах нарушений и способах их профилактики. Проверь свои знания в интерактивном тесте!
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <div className="flex items-center gap-2 bg-white/20 px-4 py-2 rounded-2xl text-sm">
-              <Icon name="Eye" size={16} /> Строение глаза
-            </div>
-            <div className="flex items-center gap-2 bg-white/20 px-4 py-2 rounded-2xl text-sm">
-              <Icon name="Shield" size={16} /> Профилактика
-            </div>
-            <div className="flex items-center gap-2 bg-white/20 px-4 py-2 rounded-2xl text-sm">
-              <Icon name="ClipboardList" size={16} /> 8 вопросов теста
-            </div>
+          <div className="relative min-h-52 md:min-h-0">
+            <img
+              src={IMG_HOME_HERO}
+              alt="Иллюстрация зрения"
+              className="w-full h-full object-cover md:rounded-r-3xl opacity-90"
+            />
           </div>
         </div>
       </section>
 
+      {/* Определение зрения */}
+      <section className="mb-10">
+        <div className="bg-gradient-to-br from-blue-50 to-pink-50 rounded-3xl p-8">
+          <div className="flex items-start gap-4 mb-4">
+            <div className="w-12 h-12 gradient-blue-pink rounded-2xl flex items-center justify-center text-white text-2xl flex-shrink-0">
+              👁️
+            </div>
+            <div>
+              <h2 className="text-2xl font-bold mb-1">Что такое зрение?</h2>
+              <p className="text-gray-500 text-sm">Определение и основные понятия</p>
+            </div>
+          </div>
+          <p className="text-gray-700 leading-relaxed text-base mb-4">
+            <strong>Зрение</strong> — это способность живых организмов воспринимать электромагнитное излучение видимого диапазона (световые волны) и преобразовывать его в нервные импульсы, которые мозг интерпретирует как зрительные образы.
+          </p>
+          <p className="text-gray-700 leading-relaxed text-base mb-4">
+            У человека органом зрения является <strong>глаз</strong> — сложная оптическая система, способная фокусировать изображение на светочувствительной оболочке — сетчатке. Там расположены фоторецепторы двух типов: <strong>палочки</strong> (отвечают за сумеречное зрение) и <strong>колбочки</strong> (обеспечивают цветное зрение).
+          </p>
+          <p className="text-gray-700 leading-relaxed text-base">
+            Зрение даёт нам около <strong>80–90% всей информации</strong> об окружающем мире. Именно поэтому так важно беречь глаза и вовремя обращаться к врачу при малейших изменениях.
+          </p>
+          <div className="mt-6 grid grid-cols-3 gap-4">
+            {[
+              { icon: "Lightbulb", label: "Воспринимает свет", color: "text-yellow-500 bg-yellow-50" },
+              { icon: "Zap", label: "Создаёт нервный импульс", color: "text-blue-500 bg-blue-50" },
+              { icon: "Brain", label: "Мозг строит образ", color: "text-pink-500 bg-pink-50" },
+            ].map((item) => (
+              <div key={item.label} className="flex flex-col items-center text-center gap-2 bg-white rounded-2xl p-4 shadow-sm">
+                <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${item.color}`}>
+                  <Icon name={item.icon} size={20} />
+                </div>
+                <span className="text-xs font-medium text-gray-600 leading-tight">{item.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Eye diagram */}
       <section className="mb-10">
         <h2 className="text-2xl font-bold mb-2 text-gradient">Схема строения глаза</h2>
-        <p className="text-gray-500 mb-6">Анатомия глазного яблока в разрезе</p>
+        <p className="text-gray-500 mb-5">Анатомия глазного яблока в разрезе</p>
         <div className="rounded-3xl overflow-hidden shadow-xl border border-blue-100">
-          <img src={EYE_IMAGE} alt="Схема строения глаза" className="w-full object-cover max-h-80 md:max-h-96" />
+          <img src={IMG_EYE_DIAGRAM} alt="Схема строения глаза" className="w-full object-cover max-h-80 md:max-h-96" />
         </div>
       </section>
 
+      {/* Parts grid */}
       <section className="mb-10">
         <h2 className="text-2xl font-bold mb-6">Части глаза и их функции</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -187,6 +227,7 @@ function HomePage() {
         </div>
       </section>
 
+      {/* How vision works */}
       <section className="bg-gradient-to-br from-blue-50 to-pink-50 rounded-3xl p-8">
         <h2 className="text-2xl font-bold mb-6">Как мы видим?</h2>
         <div className="flex flex-col gap-4">
@@ -220,7 +261,7 @@ function DisordersPage() {
 
   const disorders = {
     myopia: {
-      title: "Близорукость (Миопия)",
+      title: "Близорукость (миопия)",
       emoji: "🔍",
       color: "from-blue-500 to-cyan-500",
       bgColor: "bg-blue-50",
@@ -246,7 +287,7 @@ function DisordersPage() {
       ],
     },
     hyperopia: {
-      title: "Дальнозоркость (Гиперметропия)",
+      title: "Дальнозоркость (гиперметропия)",
       emoji: "🔭",
       color: "from-pink-500 to-rose-500",
       bgColor: "bg-pink-50",
@@ -267,7 +308,7 @@ function DisordersPage() {
         "Хорошее освещение при чтении и работе",
         "Соблюдать расстояние 30–40 см до книги",
         "Регулярные перерывы при длительной зрительной нагрузке",
-        "Употреблять продукты богатые витамином A",
+        "Употреблять продукты, богатые витамином A",
         "Своевременная коррекция линзами или очками",
       ],
     },
@@ -277,11 +318,18 @@ function DisordersPage() {
 
   return (
     <div className="animate-fade-in">
-      <div className="mb-8">
-        <h2 className="text-3xl font-bold mb-2">Нарушения зрения</h2>
-        <p className="text-gray-500">Узнай о самых распространённых проблемах со зрением и как их предотвратить</p>
-      </div>
+      {/* Header with image */}
+      <section className="rounded-3xl overflow-hidden mb-8 relative">
+        <img src={IMG_DISORDERS} alt="Нарушения зрения" className="w-full object-cover h-48 md:h-60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent flex items-end p-8">
+          <div className="text-white">
+            <h2 className="text-3xl font-bold mb-1">Нарушения зрения</h2>
+            <p className="text-white/80">Узнай о самых распространённых проблемах и как их предотвратить</p>
+          </div>
+        </div>
+      </section>
 
+      {/* Tabs */}
       <div className="flex gap-3 mb-8">
         {(["myopia", "hyperopia"] as const).map((key) => (
           <button
@@ -450,10 +498,21 @@ function TestPage() {
 
   return (
     <div className="animate-fade-in">
+      {/* Header with image */}
+      <section className="rounded-3xl overflow-hidden mb-8 relative">
+        <img src={IMG_TEST} alt="Проверь себя" className="w-full object-cover h-44 md:h-52" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent flex items-end p-8">
+          <div className="text-white">
+            <h2 className="text-3xl font-bold mb-1">Проверь себя</h2>
+            <p className="text-white/80">8 вопросов на знание темы зрения</p>
+          </div>
+        </div>
+      </section>
+
       <div className="mb-8">
         <div className="flex items-center justify-between mb-3">
-          <h2 className="text-2xl font-bold">Проверь свои знания</h2>
-          <span className="text-sm text-gray-500 font-medium">{currentQ + 1} / {quizQuestions.length}</span>
+          <span className="text-sm text-gray-500 font-medium">Вопрос {currentQ + 1} из {quizQuestions.length}</span>
+          <span className="text-sm font-semibold text-gradient">{Math.round(((currentQ + (selected !== null ? 1 : 0)) / quizQuestions.length) * 100)}%</span>
         </div>
         <div className="h-3 bg-gray-100 rounded-full overflow-hidden">
           <div
@@ -621,7 +680,7 @@ export default function App() {
         {activeSection === "resources" && <ResourcesPage />}
       </main>
       <footer className="border-t border-gray-100 py-6 text-center text-sm text-gray-400">
-        Мир Зрения — образовательный проект · 2024
+        Про зрение — образовательный проект · 2024
       </footer>
     </div>
   );
